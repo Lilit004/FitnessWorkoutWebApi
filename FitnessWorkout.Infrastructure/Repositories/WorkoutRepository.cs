@@ -1,0 +1,37 @@
+﻿using FitnessWorkout.Application.DTO.Workouts;
+using FitnessWorkout.Core.Entities;
+using FitnessWorkout.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
+
+namespace FitnessWorkout.Infrastructure.Repositories;
+
+public class WorkoutRepository : IWorkoutRepository
+{
+    private readonly FitnessWorkoutDbContext _context;
+    public WorkoutRepository(FitnessWorkoutDbContext context)
+    {
+        _context = context;
+    }
+    public async Task<List<Workout>> GetWorkouts()
+    {
+        var workouts = await _context.Workouts
+            .Include(x => x.Exercises)
+            .ToListAsync();
+        return workouts;
+    }
+
+    public async Task AddUserWorkout(UserWorkout userWorkout)
+    {
+        await _context.UserWorkouts.AddAsync(userWorkout);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<List<UserWorkout>> GetUserWorkouts(int userId)
+    {
+        var userWorkouts = await _context.UserWorkouts.Where(x => x.UserId == userId)
+            .Include(x => x.Workout)
+            .Include(x => x.Status)
+            .ToListAsync();
+        return userWorkouts;
+    }
+}

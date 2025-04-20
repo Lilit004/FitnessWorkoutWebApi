@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
+      <PackageReference Include="Convey" Version="1.1.448" />
+      <PackageReference Include="Convey.CQRS.Commands" Version="1.1.448" />
+      <PackageReference Include="Convey.CQRS.Queries" Version="1.1.448" />
+      <PackageReference Include="Convey.Docs.Swagger" Version="1.1.448" />
+      <PackageReference Include="Convey.WebApi.CQRS" Version="1.1.448" />
+      <PackageReference Include="Convey.WebApi.Swagger" Version="1.1.448" />
+      <PackageReference Include="FluentValidation" Version="12.0.0-preview1" />
+      <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FitnessWorkout.Core\FitnessWorkout.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Query\Workout\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Query\Workout\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Query\Workout\**" />
+    </ItemGroup>
+
+</Project>
