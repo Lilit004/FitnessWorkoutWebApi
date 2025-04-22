@@ -1,4 +1,4 @@
-#FITNESSWORKOUTWEBAPI
+FitnessWorkoutWebApi
 
 FITNESSWORKOUT is a RESTful ASP.NET Core Web API designed to help users plan, track, and manage their workout routines. Users can create personalized workout plans, select exercises based on difficulty, and set clear start/end dates to reach their fitness goals.
 
