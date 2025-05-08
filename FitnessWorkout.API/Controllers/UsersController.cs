@@ -1,4 +1,7 @@
 ﻿using Convey.CQRS.Commands;
+using Convey.CQRS.Queries;
+using Convey.WebApi.Requests;
+using FitnessWorkout.Application;
 using FitnessWorkout.Application.Commands.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -11,10 +14,12 @@ namespace FitnessWorkout.API.Controllers;
 public class UsersController : ControllerBase
 {
     private readonly ICommandDispatcher _commandDispatcher;
+    private readonly IQueryDispatcher _queryDispatcher;
 
-    public UsersController(ICommandDispatcher commandDispatcher)
+    public UsersController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
     {
         _commandDispatcher = commandDispatcher;
+        _queryDispatcher = queryDispatcher;
     }
 
     [HttpPost("sign-up")]
@@ -27,10 +32,10 @@ public class UsersController : ControllerBase
     
     [HttpPost("sign-in")]
     [AllowAnonymous]
-    public async Task<ActionResult> SignIn([FromBody] SignIn command)
+    public async Task<ActionResult> SignIn([FromBody] SignIn query)
     {
-        await _commandDispatcher.SendAsync(command);
-        return Ok();
+        var token = await _queryDispatcher.QueryAsync<string>(query);
+        return Ok(new {token = token});
     }
     
     [Authorize]

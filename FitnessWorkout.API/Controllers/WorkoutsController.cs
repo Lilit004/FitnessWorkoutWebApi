@@ -44,4 +44,12 @@ public class WorkoutsController : ControllerBase
         var workouts = await _queryDispatcher.QueryAsync(query);
         return Ok(workouts);
     }
+
+    [Authorize]
+    [HttpPut("user/update-workout")]
+    public async Task<ActionResult> UpdateUserWorkout([FromBody] UpdateUserWorkout command)
+    {
+        await _commandDispatcher.SendAsync(command);
+        return Ok();
+    }
 }

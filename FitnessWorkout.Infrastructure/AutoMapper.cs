@@ -13,5 +13,6 @@ public class MappingProfile : Profile
         CreateMap<AddUser,User>();
         CreateMap<Workout, WorkoutDto>();
         CreateMap<AddUserWorkout, UserWorkout>();
+        CreateMap<UpdateUserWorkout,UserWorkout>();
     }
 }

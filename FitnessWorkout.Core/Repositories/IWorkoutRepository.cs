@@ -7,4 +7,5 @@ public interface IWorkoutRepository
     Task<List<Workout>> GetWorkouts();
     Task AddUserWorkout(UserWorkout userWorkout);
     Task<List<UserWorkout>> GetUserWorkouts(int userId);
+    Task UpdateUserWorkout(UserWorkout userWorkout);
 }

@@ -16,6 +16,7 @@
       <PackageReference Include="Convey.WebApi.Swagger" Version="1.1.448" />
       <PackageReference Include="FluentValidation" Version="12.0.0-preview1" />
       <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.15" />
     </ItemGroup>
 
     <ItemGroup>

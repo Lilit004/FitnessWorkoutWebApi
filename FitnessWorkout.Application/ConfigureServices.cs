@@ -2,6 +2,7 @@
 using Convey;
 using Convey.CQRS.Commands;
 using Convey.CQRS.Queries;
+using Convey.WebApi;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;

@@ -34,4 +34,10 @@ public class WorkoutRepository : IWorkoutRepository
             .ToListAsync();
         return userWorkouts;
     }
+
+    public async Task UpdateUserWorkout(UserWorkout userWorkout)
+    {
+        _context.UserWorkouts.Update(userWorkout);
+        await _context.SaveChangesAsync();
+    }
 }
