@@ -39,6 +39,7 @@ public static class ConfigureServices
 
         services.AddTransient<IWorkoutRepository, WorkoutRepository>();
         services.AddTransient<IJwtService, JwtService>();
+        services.AddTransient<IStatusRepository, StatusRepository>();
         return services;
     }
 }

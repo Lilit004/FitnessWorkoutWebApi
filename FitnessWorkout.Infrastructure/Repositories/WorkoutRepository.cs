@@ -20,6 +20,12 @@ public class WorkoutRepository : IWorkoutRepository
         return workouts;
     }
 
+    public async Task<Workout?> GetWorkoutById(int workoutId)
+    {
+        var workout = await _context.Workouts.FirstOrDefaultAsync(x => x.Id == workoutId);
+        return workout;
+    }
+
     public async Task AddUserWorkout(UserWorkout userWorkout)
     {
         await _context.UserWorkouts.AddAsync(userWorkout);
@@ -39,5 +45,11 @@ public class WorkoutRepository : IWorkoutRepository
     {
         _context.UserWorkouts.Update(userWorkout);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<UserWorkout?> GetUserWorkoutById(int userWorkoutId)
+    {
+        var userWorkout = await _context.UserWorkouts.FirstOrDefaultAsync(x => x.Id == userWorkoutId);
+        return userWorkout;
     }
 }
